@@ -21,7 +21,14 @@ public abstract class AbstractApiProvider {
 	}
 	
 	protected <T> T getBean(Class<T> clazz){
+		checkApiProvider();
 		return 	applicationContext.getBean(clazz);
+	}
+	
+	private void  checkApiProvider(){
+		if(applicationContext==null){
+			throw new IllegalStateException("异常applicationContext");
+		}
 	}
 	protected  abstract String  register();
 }
