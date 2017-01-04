@@ -63,9 +63,10 @@ public class JedisClient implements CacheClient{
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public String get(String key) {
+	public <T> T get(String key) {
 		Jedis jedis = jedisPool.getResource();
-		return jedis.get(key);
+		return (T)SerializeUtil.unserialize(jedis.get(key.getBytes()));
 	}
 }

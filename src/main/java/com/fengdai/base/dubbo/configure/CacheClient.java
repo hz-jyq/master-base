@@ -8,7 +8,7 @@ public interface CacheClient {
 	
 	<T>   boolean set(String key,int expiredTime,T t);
 	
-	String get(String key);
+	<T> T get(String key);
 
 	boolean set(String key, String value);
 }
