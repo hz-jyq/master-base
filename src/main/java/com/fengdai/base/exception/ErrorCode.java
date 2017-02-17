@@ -2,7 +2,8 @@ package com.fengdai.base.exception;
 
 public enum ErrorCode {
 	
-	ERROR_NOT_NULL_ERROR(0001, "不能为空");
+	ERROR_NOT_NULL_ERROR(0010, "不能为空"),
+	ERROR_CUSTOM(0000, "自定义");
 	
     private Integer code;
     private String description;
@@ -27,5 +28,11 @@ public enum ErrorCode {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	 public   ErrorCode customDescription(int code,String description) {
+        this.setCode(code);
+        this.setDescription(description);
+        return this;
+	 }
 
 }
